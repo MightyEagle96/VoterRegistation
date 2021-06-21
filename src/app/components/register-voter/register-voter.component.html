@@ -1,0 +1,59 @@
+<div>
+  <div class="mt-5 row">
+    <div class="form-group col-auto">
+      <label for="name">Name</label>
+      <input
+        [(ngModel)]="voterName"
+        type="text"
+        class="form-control"
+        id="name"
+      />
+    </div>
+    <div class="form-group col-auto">
+      <label for="state">State of Origin</label>
+      <select
+        [(ngModel)]="voterState"
+        (change)="getStateOfOrigin($event)"
+        name="singlSelect"
+        id="state"
+        class="form-control"
+      >
+        <option
+          *ngFor="let stateAndLga of stateAndLgas"
+          [value]="stateAndLga.state"
+          [text]="stateAndLga.state"
+        ></option>
+      </select>
+    </div>
+    <div class="form-group col-auto">
+      <label for="lga">Local Government Area</label>
+      <select name="" id="lga" class="form-control" [(ngModel)]="voterLga">
+        <option
+          *ngFor="let lga of localGovernmentArea"
+          [value]="lga?.name"
+          [text]="lga?.name"
+        ></option>
+      </select>
+    </div>
+    <div class="form-group col-auto">
+      <label for="politicalParty">Politcal Party</label>
+      <select
+        name=""
+        id="politicalParty"
+        class="form-control"
+        [(ngModel)]="voterPoliticalParty"
+      >
+        <option
+          *ngFor="let politicalParty of politicalParties"
+          [value]="politicalParty.party"
+          [text]="politicalParty.party"
+        ></option>
+      </select>
+    </div>
+  </div>
+  <div class="mt-2">
+    <button class="btn btn-success" (click)="registerVoter()">Register</button>
+  </div>
+</div>
+<hr />
+<app-election-result></app-election-result>
